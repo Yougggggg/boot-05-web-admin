@@ -22,7 +22,8 @@ import java.io.IOException;
 public class FormTestController {
 
     @GetMapping("/form_layouts")
-    public String form_layouts(){
+    public String form_layouts(@RequestParam("a")int a){
+        int i = 1 / 0;
         return "form/form_layouts.html";
     }
 

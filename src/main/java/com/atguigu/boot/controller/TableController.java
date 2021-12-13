@@ -1,6 +1,7 @@
 package com.atguigu.boot.controller;
 
 import com.atguigu.boot.bean.User;
+import com.atguigu.boot.exception.UserManyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,6 +33,8 @@ public class TableController {
     public String dynamic_table(Model model){
         List<User> users = Arrays.asList(new User("zzz", "123"), new User("bbb", "123"),
                 new User("ccc", "123"), new User("ddd", "123"));
+        if (users.size()>2)
+            throw new UserManyException();
         model.addAttribute("users",users);
         return "/table/dynamic_table";
     }
